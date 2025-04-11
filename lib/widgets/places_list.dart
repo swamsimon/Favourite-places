@@ -8,18 +8,28 @@ class PlacesListwidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(places.isEmpty){
+    if (places.isEmpty) {
       return Center(
-        child: Text('No Places added yet'),
+        child: Text(
+          'No Places added yet',
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
       );
     }
 
     return ListView.builder(
       itemCount: places.length,
-      itemBuilder: (ctx,index) => 
-      ListTile( 
-        title: Text(places[index].title),
-        style: Theme.of(context).,),
+      itemBuilder:
+          (ctx, index) => ListTile(
+            title: Text(
+              places[index].title,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
     );
   }
 }
