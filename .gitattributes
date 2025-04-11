@@ -1,16 +1,8 @@
-# Ignore C++ files for linguist
+# Ignore C++ and CMake files for language stats
 *.cpp linguist-detectable=false
-*.cc linguist-detectable=false
-*.cxx linguist-detectable=false
-*.c++ linguist-detectable=false
-*.hpp linguist-detectable=false
-*.hh linguist-detectable=false
-*.hxx linguist-detectable=false
-*.h++ linguist-detectable=false
-
-# Ignore CMake files
+*.h linguist-detectable=false
 CMakeLists.txt linguist-detectable=false
 *.cmake linguist-detectable=false
 
-# Force Dart to be considered the main language
-*.dart linguist-detectable=true
+cpp/** linguist-detectable=false
+cmake/** linguist-detectable=false
