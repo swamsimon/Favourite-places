@@ -1,15 +1,26 @@
+import 'package:favourite_places/providers/user_places.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddPlaceScreen extends StatefulWidget {
+class AddPlaceScreen extends ConsumerStatefulWidget    {
   const AddPlaceScreen({super.key});
 
   @override
-  State<AddPlaceScreen> createState() => _AddPlaceScreenState();
+  ConsumerState<AddPlaceScreen> createState() => _AddPlaceScreenState();
 }
 
-class _AddPlaceScreenState extends State<AddPlaceScreen> {
+class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
 
+  void _savePlace(){
+    final _enteredText = _titleController.text;
+
+    if(_enteredText.isEmpty){
+      return;
+    }
+    ref.read(userPlacesNotifier.notifier).addPlace(_enteredText);
+    Navigator.of(context).pop();
+  }
   @override
   void dispose() {
     _titleController.dispose();
@@ -33,7 +44,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
             SizedBox(height: 16),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: _savePlace,
               icon: const Icon(Icons.add),
               label: const Text("Add Your Place"),
             ),

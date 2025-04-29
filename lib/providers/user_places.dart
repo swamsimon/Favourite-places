@@ -1,7 +1,6 @@
 import 'package:favourite_places/models/places.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserPlacesNotifier extends StateNotifier<List<Places>> {
   UserPlacesNotifier() : super(const []);
@@ -12,4 +11,7 @@ class UserPlacesNotifier extends StateNotifier<List<Places>> {
   }
 }
 
-final userPlacesNotifier = StateNotifierProvider((ref) => UserPlacesNotifier());
+final userPlacesNotifier =
+    StateNotifierProvider<UserPlacesNotifier, List<Places>>(
+      (ref) => UserPlacesNotifier(),
+    );
