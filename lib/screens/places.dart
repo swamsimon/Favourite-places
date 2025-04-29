@@ -9,7 +9,7 @@ class PlacesScreenlist extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final userPlaces =  ref.watch(userPlacesNotifier);
+    final userPlaces = ref.watch(userPlacesNotifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Places'),
