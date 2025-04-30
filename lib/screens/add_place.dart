@@ -12,6 +12,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
+  var _selectedImage;
 
   void _savePlace() {
     final _enteredText = _titleController.text;
@@ -19,7 +20,9 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
     if (_enteredText.isEmpty) {
       return;
     }
-    ref.read(userPlacesNotifier.notifier).addPlace(_enteredText);
+    ref
+        .read(userPlacesNotifier.notifier)
+        .addPlace(_enteredText, _selectedImage!);
     Navigator.of(context).pop();
   }
 
@@ -45,7 +48,11 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
             ),
             const SizedBox(height: 10),
-            ImageInput(),
+            ImageInput(
+              onPickImage: (image) {
+                _selectedImage = image;
+              },
+            ),
             SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: _savePlace,
